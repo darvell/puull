@@ -1,0 +1,25 @@
+Connects via HTTPS to puush.me
+
+Routes:
+
+api/up
+
+- Handles uploads. 
+- Sends the following POST payload:
+	k = API key
+	z = "poop" # Some constant?
+	c = File MD5 # (or SHA1?)
+	f = File
+
+- Responds with:
+	0,URL,Unix Timestamp,0
+
+api/hist
+
+- Handles the history of uploads. Also acts as authorization.
+- Sends the following POST payload:
+	k = API key
+- Responds with CSV list of the following format:
+	UNIX timestamp,YYYY-MM-DD 00:00:00,URL,Filename,Unknown value (0,6 or 1),Unknown Value (always 0)  
+- There is a max of ten entries.
+- First line always seems to be just 0.
